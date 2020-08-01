@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 
-public class DisplayBuffer
+public class DisplayBuffer   
 {
     List<string> logLines = new List<string>();
 
     InputBuffer inputBuffer;
-    const float FLASH_INTERVAL = .5f;
+    const float FLASH_INTERVAL = 0.5f;   //determines the flashing of command _
 
     public DisplayBuffer(InputBuffer inputBuffer)
     {
@@ -37,7 +37,7 @@ public class DisplayBuffer
         string output = "";
         foreach (string line in logLines)
         {
-            output += line + '\n';
+            output += line;  // putting \n is putting the user input on a new line, including the _
         }
         output += inputBuffer.GetCurrentInputLine();
         output += GetFlashingCursor(time);

@@ -3,48 +3,65 @@
 public class Hacker : MonoBehaviour {
 
     // Game configuration data
-    const string menuHint = "You may type menu at any time.";
+    const string menuHint = "You may type abort at any time.";
     string[] level1Passwords = { "books", "aisle", "shelf", "password", "font", "borrow" };
     string[] level2Passwords = { "prisoner", "handcuffs", "holster", "uniform", "arrest" };
     string[] level3Passwords = { "starfield", "telescope", "environment", "exploration", "astronauts" };
 
     // Game state
     int level;
-    enum Screen { MainMenu, Password, Win };
+    enum Screen { LoginScreen, HackerModule, Password, Win };
     Screen currentScreen;
     string password;
 
 	// Use this for initialization
 	void Start ()
     {
-        ShowMainMenu ();
+        ShowLoginScreen ();
     }
 
-    void ShowMainMenu ()
+    void ShowLoginScreen ()
     {
-        currentScreen = Screen.MainMenu;
+        currentScreen = Screen.LoginScreen;
         Terminal.ClearScreen();
-        Terminal.WriteLine("What would you like to hack into?");
-        Terminal.WriteLine("Press 1 for the local library");
-        Terminal.WriteLine("Press 2 for the police station");
-        Terminal.WriteLine("Press 3 for NASA!");
-        Terminal.WriteLine("Enter your selection:");
+        Terminal.WriteLine("Macrohard Aperture [Version 7.0.34567.356]" + '\n');
+        Terminal.WriteLine("(c) 2020 Macrohard Inc. All Rights Reserved." + '\n' + '\n');
+        Terminal.WriteLine(@"C:\Users\wahzammo>");
+    }
+
+    void ShowHackerModule ()
+    {
+        currentScreen = Screen.HackerModule;
+        Terminal.ClearScreen();
+        Terminal.WriteLine("HackerModule loaded...." + '\n');
+        Terminal.WriteLine("We strongly advise the use of VPN/TOR...." + '\n');
+        Terminal.WriteLine("Currently accessible targets...." + '\n' + '\n');
+        Terminal.WriteLine("Press 1 for the local library" + '\n');
+        Terminal.WriteLine("Press 2 for the police station" + '\n');
+        Terminal.WriteLine("Press 3 for NASA!" + '\n' + '\n');
+        Terminal.WriteLine(@"C:\Users\wahzammo>");
     }
 
     void OnUserInput(string input)
     {
-        if (input == "menu") // we can always go direct to main menu
+        if (input == "abort") // we can always go direct to main menu
         {
-            ShowMainMenu();
+            ShowLoginScreen();
         }
         else if (input == "quit" || input == "close" || input == "exit")
         {
-            Terminal.WriteLine("If on the web close the tab.");
+            Terminal.WriteLine("" + '\n'+'\n');
+            Terminal.WriteLine("If on the web close the tab." + '\n' + '\n');
+            Terminal.WriteLine(@"C:\Users\wahzammo>");
             Application.Quit();
         }
-        else if (currentScreen == Screen.MainMenu)
+        else if (currentScreen == Screen.LoginScreen)
         {
-            RunMainMenu(input);
+            RunLoginScreen(input);
+        }
+        else if (currentScreen == Screen.HackerModule)
+        {
+            CheckPassword(input);
         }
         else if (currentScreen == Screen.Password)
         {
@@ -52,7 +69,27 @@ public class Hacker : MonoBehaviour {
         }
     }
 
-    void RunMainMenu(string input)
+    void RunLoginScreen(string input)
+    {
+        if (input == "run H@ck3rTime" || input == "load H@ck3rTime")
+        {
+            ShowHackerModule();
+        }
+        else if (input == "007") // easter egg
+        {
+            Terminal.WriteLine("" + '\n' + '\n');
+            Terminal.WriteLine("Please select a level Mr Bond!");
+        }
+        else
+        {
+            Terminal.WriteLine("" + '\n' + '\n');
+            Terminal.WriteLine("Please choose a valid command...." + '\n');
+            Terminal.WriteLine(menuHint + '\n' + '\n');
+            Terminal.WriteLine(@"C:\Users\wahzammo>");
+        }
+    }
+
+    void RunHackerModule(string input)
     {
         bool isValidLevelNumber = (input == "1" || input == "2" || input == "3");
         if (isValidLevelNumber)
@@ -62,12 +99,15 @@ public class Hacker : MonoBehaviour {
         }
         else if (input == "007") // easter egg
         {
+            Terminal.WriteLine("" + '\n' + '\n');
             Terminal.WriteLine("Please select a level Mr Bond!");
         }
         else
         {
-            Terminal.WriteLine("Please choose a valid level");
-            Terminal.WriteLine(menuHint);
+            Terminal.WriteLine("" + '\n' + '\n');
+            Terminal.WriteLine("Please choose a valid command...." + '\n');
+            Terminal.WriteLine(menuHint + '\n');
+            Terminal.WriteLine(@"C:\Users\wahzammo>");
         }
     }
 
@@ -76,8 +116,10 @@ public class Hacker : MonoBehaviour {
         currentScreen = Screen.Password;
         Terminal.ClearScreen();
         SetRandomPassword();
-        Terminal.WriteLine("Enter your password, hint: " + password.Anagram());
-        Terminal.WriteLine(menuHint);
+        Terminal.WriteLine("" + '\n' + '\n');
+        Terminal.WriteLine("Enter your password, hint: " + password.Anagram() + '\n');
+        Terminal.WriteLine(menuHint + '\n');
+        Terminal.WriteLine(@"C:\Users\wahzammo>");
     }
 
     void SetRandomPassword()
@@ -116,7 +158,8 @@ public class Hacker : MonoBehaviour {
         currentScreen = Screen.Win;
         Terminal.ClearScreen();
         ShowLevelReward();
-        Terminal.WriteLine(menuHint);
+        Terminal.WriteLine(menuHint + '\n');
+        Terminal.WriteLine(@"C:\Users\wahzammo>");
     }
 
     void ShowLevelReward()

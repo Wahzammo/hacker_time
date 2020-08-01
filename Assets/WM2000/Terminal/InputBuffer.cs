@@ -1,4 +1,4 @@
-﻿public class InputBuffer
+﻿public class InputBuffer  // InputBuffer is exactly that, limits the amount of characters that can be processed by input
 {
     string currentInputLine; // todo private
 
