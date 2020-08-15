@@ -18,7 +18,7 @@ public class DisplayBuffer
     {
         logLines.Add(line);
     }
-
+    
     public void Clear()
     {
         logLines = new List<string>();
@@ -37,8 +37,9 @@ public class DisplayBuffer
         string output = "";
         foreach (string line in logLines)
         {
-            output += line;  // putting \n is putting the user input on a new line, including the _
+            output += line + '\n';  // putting \n is terminal output all on new lines, including the _
         }
+        // TODO this is where my proposed CommandLine should go  C:\Users\wahzammo>, would like to have wahzammo be a user input variable??
         output += inputBuffer.GetCurrentInputLine();
         output += GetFlashingCursor(time);
         return output;

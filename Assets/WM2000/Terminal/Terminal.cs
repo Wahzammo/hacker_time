@@ -36,6 +36,7 @@ public class Terminal : MonoBehaviour
         primaryTerminal.displayBuffer.WriteLine(line);
     }
 
+
     public void NotifyCommandHandlers(string input)
     {
         var allGameObjects = FindObjectsOfType<MonoBehaviour>();

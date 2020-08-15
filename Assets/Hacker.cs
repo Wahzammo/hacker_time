@@ -24,8 +24,8 @@ public class Hacker : MonoBehaviour {
     {
         currentScreen = Screen.LoginScreen;
         Terminal.ClearScreen();
-        Terminal.WriteLine("Macrohard Aperture [Version 7.0.34567.356]" + '\n');
-        Terminal.WriteLine("(c) 2020 Macrohard Inc. All Rights Reserved." + '\n' + '\n');
+        Terminal.WriteLine("Macrohard Aperture [Version 7.0.34567.356]");
+        Terminal.WriteLine("(c) 2020 Macrohard Inc. All Rights Reserved.");
         Terminal.WriteLine(@"C:\Users\wahzammo>");
     }
 
@@ -33,12 +33,12 @@ public class Hacker : MonoBehaviour {
     {
         currentScreen = Screen.HackerModule;
         Terminal.ClearScreen();
-        Terminal.WriteLine("HackerModule loaded...." + '\n');
-        Terminal.WriteLine("We strongly advise the use of VPN/TOR...." + '\n');
-        Terminal.WriteLine("Currently accessible targets...." + '\n' + '\n');
-        Terminal.WriteLine("Press 1 for the local library" + '\n');
-        Terminal.WriteLine("Press 2 for the police station" + '\n');
-        Terminal.WriteLine("Press 3 for NASA!" + '\n' + '\n');
+        Terminal.WriteLine("HackerModule loaded....");
+        Terminal.WriteLine("We strongly advise the use of VPN/TOR....");
+        Terminal.WriteLine("Currently accessible targets....");
+        Terminal.WriteLine("Press 1 for the local library");
+        Terminal.WriteLine("Press 2 for the police station");
+        Terminal.WriteLine("Press 3 for NASA!");
         Terminal.WriteLine(@"C:\Users\wahzammo>");
     }
 
@@ -50,8 +50,8 @@ public class Hacker : MonoBehaviour {
         }
         else if (input == "quit" || input == "close" || input == "exit")
         {
-            Terminal.WriteLine("" + '\n'+'\n');
-            Terminal.WriteLine("If on the web close the tab." + '\n' + '\n');
+            Terminal.WriteLine("");
+            Terminal.WriteLine("If on the web close the tab.");
             Terminal.WriteLine(@"C:\Users\wahzammo>");
             Application.Quit();
         }
@@ -77,14 +77,14 @@ public class Hacker : MonoBehaviour {
         }
         else if (input == "007") // easter egg
         {
-            Terminal.WriteLine("" + '\n' + '\n');
+            Terminal.WriteLine("");
             Terminal.WriteLine("Please select a level Mr Bond!");
         }
         else
         {
-            Terminal.WriteLine("" + '\n' + '\n');
-            Terminal.WriteLine("Please choose a valid command...." + '\n');
-            Terminal.WriteLine(menuHint + '\n' + '\n');
+            Terminal.WriteLine("");
+            Terminal.WriteLine("Please choose a valid command....");
+            Terminal.WriteLine(menuHint);
             Terminal.WriteLine(@"C:\Users\wahzammo>");
         }
     }
@@ -99,14 +99,14 @@ public class Hacker : MonoBehaviour {
         }
         else if (input == "007") // easter egg
         {
-            Terminal.WriteLine("" + '\n' + '\n');
+            Terminal.WriteLine("");
             Terminal.WriteLine("Please select a level Mr Bond!");
         }
         else
         {
-            Terminal.WriteLine("" + '\n' + '\n');
-            Terminal.WriteLine("Please choose a valid command...." + '\n');
-            Terminal.WriteLine(menuHint + '\n');
+            Terminal.WriteLine("");
+            Terminal.WriteLine("Please choose a valid command....");
+            Terminal.WriteLine(menuHint);
             Terminal.WriteLine(@"C:\Users\wahzammo>");
         }
     }
@@ -116,9 +116,9 @@ public class Hacker : MonoBehaviour {
         currentScreen = Screen.Password;
         Terminal.ClearScreen();
         SetRandomPassword();
-        Terminal.WriteLine("" + '\n' + '\n');
-        Terminal.WriteLine("Enter your password, hint: " + password.Anagram() + '\n');
-        Terminal.WriteLine(menuHint + '\n');
+        Terminal.WriteLine("");
+        Terminal.WriteLine("Enter your password, hint: " + password.Anagram() );
+        Terminal.WriteLine(menuHint);
         Terminal.WriteLine(@"C:\Users\wahzammo>");
     }
 
@@ -158,7 +158,7 @@ public class Hacker : MonoBehaviour {
         currentScreen = Screen.Win;
         Terminal.ClearScreen();
         ShowLevelReward();
-        Terminal.WriteLine(menuHint + '\n');
+        Terminal.WriteLine(menuHint);
         Terminal.WriteLine(@"C:\Users\wahzammo>");
     }
 

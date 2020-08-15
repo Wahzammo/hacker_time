@@ -46,7 +46,7 @@
             // do nothing on delete at start of line
         }
     }
-
+        
     private void SendCommand(string command)
     {
         onCommandSent(command);
