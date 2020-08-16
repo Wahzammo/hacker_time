@@ -10,7 +10,7 @@ public class Hacker : MonoBehaviour {
 
     // Game state
     int level;
-    enum Screen { LoginScreen, HackerModule, Password, Win };
+    enum Screen { LoginScreen, HackerModule, GovTargets, FinTargets, TelcoTargets, TechTargets, Citizens, Password, Win };
     Screen currentScreen;
     string password;
 
@@ -26,7 +26,6 @@ public class Hacker : MonoBehaviour {
         Terminal.ClearScreen();
         Terminal.WriteLine("Macrohard Aperture [Version 7.0.34567.356]");
         Terminal.WriteLine("(c) 2020 Macrohard Inc. All Rights Reserved.");
-        Terminal.WriteLine(@"C:\Users\wahzammo>");
     }
 
     void ShowHackerModule ()
@@ -36,10 +35,25 @@ public class Hacker : MonoBehaviour {
         Terminal.WriteLine("HackerModule loaded....");
         Terminal.WriteLine("We strongly advise the use of VPN/TOR....");
         Terminal.WriteLine("Currently accessible targets....");
-        Terminal.WriteLine("Press 1 for the local library");
-        Terminal.WriteLine("Press 2 for the police station");
-        Terminal.WriteLine("Press 3 for NASA!");
-        Terminal.WriteLine(@"C:\Users\wahzammo>");
+        Terminal.WriteLine("Press 1 possible governmnent organisations");
+        Terminal.WriteLine("Press 2 possible financial corporations");
+        Terminal.WriteLine("Press 3 possible telcommunication infrastructure");
+        Terminal.WriteLine("Press 4 possible technology corporations");
+        Terminal.WriteLine("Press 5 possible private citizens");
+    }
+
+    void ShowGovTargets()    // TODO CREATE SHOW... FOR OTHER OPTIONS
+    {
+        currentScreen = Screen.GovTargets;
+        Terminal.ClearScreen();
+        Terminal.WriteLine("HackerModule > local targets loaded....");
+        Terminal.WriteLine("We strongly advise the use of VPN/TOR....");
+        Terminal.WriteLine("Currently accessible targets....");
+        Terminal.WriteLine("Press 1 to target United Nations");
+        Terminal.WriteLine("Press 2 to target World Heath Organization");
+        Terminal.WriteLine("Press 3 to target AUS Dept. of Defence");
+        Terminal.WriteLine("Press 4 to target US Secretary of State");
+        Terminal.WriteLine("Press 5 to target Ministries of the PRC");
     }
 
     void OnUserInput(string input)
@@ -52,7 +66,6 @@ public class Hacker : MonoBehaviour {
         {
             Terminal.WriteLine("");
             Terminal.WriteLine("If on the web close the tab.");
-            Terminal.WriteLine(@"C:\Users\wahzammo>");
             Application.Quit();
         }
         else if (currentScreen == Screen.LoginScreen)
@@ -61,7 +74,27 @@ public class Hacker : MonoBehaviour {
         }
         else if (currentScreen == Screen.HackerModule)
         {
-            CheckPassword(input);
+            RunHackerModule(input);
+        }
+        else if (currentScreen == Screen.GovTargets)
+        {
+            RunGovTargets(input);
+        }
+        else if (currentScreen == Screen.FinTargets)
+        {
+            RunFinTargets(input);
+        }
+        else if (currentScreen == Screen.TelcoTargets)
+        {
+            RunTelcoTargets(input);
+        }
+        else if (currentScreen == Screen.TechTargets)
+        {
+            RunTechTargets(input);
+        }
+        else if (currentScreen == Screen.Citizens)
+        {
+            RunCitizens(input);
         }
         else if (currentScreen == Screen.Password)
         {
@@ -75,39 +108,106 @@ public class Hacker : MonoBehaviour {
         {
             ShowHackerModule();
         }
-        else if (input == "007") // easter egg
+        else if (input == "007")
         {
             Terminal.WriteLine("");
-            Terminal.WriteLine("Please select a level Mr Bond!");
+            Terminal.WriteLine("0 motivation, 0 skills and 7 coffee breaks," + '\n' + "does not make you a special agent!");
+            Terminal.WriteLine("Get back to work you slacker, we are watching you." + '\n');
+            Terminal.WriteLine(@"
+               _________                   _______
+    _-----____/   ========================|______|
+    |           ______________/
+    |    ___--_/(_)       ^
+    |___ ---
+");
         }
         else
         {
             Terminal.WriteLine("");
             Terminal.WriteLine("Please choose a valid command....");
             Terminal.WriteLine(menuHint);
-            Terminal.WriteLine(@"C:\Users\wahzammo>");
         }
     }
 
     void RunHackerModule(string input)
     {
-        bool isValidLevelNumber = (input == "1" || input == "2" || input == "3");
+        bool isValidLevelNumber = (input == "1" || input == "2" || input == "3" || input == "4" || input == "5");
         if (isValidLevelNumber)
         {
-            level = int.Parse(input);
-            AskForPassword();
+            if (input == "1")
+            {
+                ShowGovTargets();
+            }
+            else if (input == "2")
+            {
+                ShowFinTargets();
+            }
+            else if (input == "3")
+            {
+                ShowTelcoTargets();
+            }
+            else if (input == "4")
+            {
+                ShowTechTargets();
+            }
+            else if (input == "5")
+            {
+                ShowCitizens();
+            }
+            
         }
-        else if (input == "007") // easter egg
+        else if (input == "south park")
         {
-            Terminal.WriteLine("");
-            Terminal.WriteLine("Please select a level Mr Bond!");
+            
+            Terminal.WriteLine("Hippies. They’re everywhere." + '\n' + "They wanna save Earth," + '\n' + "but all they do is smoke pot and smell bad.");
+            Terminal.WriteLine(@"
+   _O_        _____         _<>_          ___  
+ /     \     |     |      /      \      /  _  \
+|==/=\==|    |[/_\]|     |==\==/==|    |  / \  |
+|  O O  |    / O O \     |   ><   |    |  |'|  |
+ \  V  /    /\  -  /\  ,-\   ()   /-.   \  X  /
+ /`---'\     /`---'\   V( `-====-' )V   /`---'\
+ O'_:_`O     O'M|M`O   (_____:|_____)   O'_|_`O 
+  -- --       -- --       ---- ----      -- --
+");
         }
         else
         {
             Terminal.WriteLine("");
             Terminal.WriteLine("Please choose a valid command....");
             Terminal.WriteLine(menuHint);
-            Terminal.WriteLine(@"C:\Users\wahzammo>");
+        }
+    }
+
+    void RunLocalTargets(string input)
+    {
+        bool isValidLevelNumber = (input == "1" || input == "2" || input == "3" || input == "4" || input == "5");
+        if (isValidLevelNumber)
+        {
+            level = int.Parse(input);
+            AskForPassword();   // TODO these needs to redirect to new screen with local targets based on user choice
+        }
+        else if (input == "007")  // would be the easter egg
+        {
+
+            Terminal.WriteLine("");
+            Terminal.WriteLine("");
+        }
+        else
+        {
+            Terminal.WriteLine("");
+            Terminal.WriteLine("Please choose a valid command....");
+            Terminal.WriteLine(menuHint);
+        }
+    }
+
+    void RunGovTargets(string input)   //  TODO CREATE RUN... FOR OTHER OPTIONS
+    {
+        bool isValidLevelNumber = (input == "1" || input == "2" || input == "3" || input == "4" || input == "5");
+        if (isValidLevelNumber)
+        {
+            level = int.Parse(input);
+            AskForPassword();
         }
     }
 
@@ -119,7 +219,6 @@ public class Hacker : MonoBehaviour {
         Terminal.WriteLine("");
         Terminal.WriteLine("Enter your password, hint: " + password.Anagram() );
         Terminal.WriteLine(menuHint);
-        Terminal.WriteLine(@"C:\Users\wahzammo>");
     }
 
     void SetRandomPassword()
@@ -159,10 +258,9 @@ public class Hacker : MonoBehaviour {
         Terminal.ClearScreen();
         ShowLevelReward();
         Terminal.WriteLine(menuHint);
-        Terminal.WriteLine(@"C:\Users\wahzammo>");
     }
 
-    void ShowLevelReward()
+    void ShowLevelReward()   // needs to be personalised to current game
     {
         switch (level)
         {

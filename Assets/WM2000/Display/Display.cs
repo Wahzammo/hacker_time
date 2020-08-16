@@ -7,7 +7,7 @@ public class Display : MonoBehaviour
 
     // TODO calculate these two if possible
     [SerializeField] int charactersWide = 55;   // determine how many characters appear inside the display
-    [SerializeField] int charactersHigh = 14;
+    [SerializeField] int charactersHigh = 15;
 
     Text screenText;
 

@@ -39,6 +39,7 @@ public class DisplayBuffer
         {
             output += line + '\n';  // putting \n is terminal output all on new lines, including the _
         }
+        output += CommandLine();
         // TODO this is where my proposed CommandLine should go  C:\Users\wahzammo>, would like to have wahzammo be a user input variable??
         output += inputBuffer.GetCurrentInputLine();
         output += GetFlashingCursor(time);
@@ -88,6 +89,11 @@ public class DisplayBuffer
             output = lines[i] + output;
         }
         return output;
+    }
+
+    private string CommandLine()
+    {
+        return '\n' + @"C:\Users\wahzammo>";
     }
 
     private char GetFlashingCursor(float time)
